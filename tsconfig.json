@@ -7,17 +7,19 @@
         "jsx": "react",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
-        "declaration": false,
-        "noImplicitAny": false,
+        "declaration": true,
+        "noImplicitAny": true,
         "noImplicitUseStrict": false,
         "removeComments": true,
         "noLib": false,
         "preserveConstEnums": true,
         "suppressImplicitAnyIndexErrors": true,
-		  "outDir": "dist",
-		  "rootDir": "src"
+		  "outDir": "dist/",
+		  "rootDir": "src",
+		  "typeRoots": [ "node_modules/@types" ]
     },
     "exclude": [
+		  "node_modules",
         "typings/browser",
         "typings/browser.d.ts"
     ],

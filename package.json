@@ -1,24 +1,39 @@
 {
-  "name": "id3_reader",
-  "version": "1.0.0",
-  "description": "A module to read ID3-Tags from a music file",
-  "main": "dist/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "ID3",
-    "Music"
-  ],
-  "author": "Stefan Läufle",
-  "license": "ISC",
-  "dependencies": {
-    "@types/node": "^6.0.58"
-  },
-  "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-typescript": "^3.1.4",
-    "ts-node": "^2.0.0",
-    "typescript": "^2.1.4"
-  }
+	"name": "extract-featurings",
+	"version": "0.1.0",
+	"description": "A module to extracts featurings and the plain title from a title",
+	"main": "dist/lib/index.js",
+	"typings": "dist/lib/index",
+	"files": [
+		"dist/"
+	],
+	"scripts": {
+		"test": "gulp test",
+		"build": "gulp build",
+		"prepublish": "gulp build"
+	},
+	"keywords": [
+		"ID3",
+		"Music"
+	],
+	"author": "Stefan Läufle",
+	"license": "MIT",
+	"dependencies": {
+
+	},
+	"devDependencies": {
+		"@types/node": "^6.0.58",
+		"@types/chai": "^3.4.34",
+		"@types/mocha": "^2.2.35",
+		"chai": "^3.5.0",
+		"gulp": "^3.9.1",
+		"gulp-istanbul": "^1.1.1",
+		"gulp-sourcemaps": "^2.3.1",
+		"gulp-typescript": "^3.1.4",
+		"istanbul": "^0.4.5",
+		"mocha": "^3.2.0",
+		"remap-istanbul": "^0.8.4",
+		"ts-node": "^2.0.0",
+		"typescript": "^2.1.4"
+	}
 }
