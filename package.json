@@ -11,7 +11,7 @@
     "test": "gulp test",
     "build": "gulp build",
     "prepublish": "gulp build",
-    "postversion": "npm publish"
+    "postversion": "git push && git push --tags && npm publish"
   },
   "keywords": [
     "ID3",
