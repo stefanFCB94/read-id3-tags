@@ -59,6 +59,10 @@ gulp.task('build', function() {
 	runSeq('compile', 'test');
 });
 
-gulp.task('watch', function() {
+gulp.task('watch-build', function() {
 	gulp.watch('src/**/*.ts', ['build']);
+});
+
+gulp.task('watch-compile', function() {
+	gulp.watch('src/**/*.ts', ['compile']);
 });
