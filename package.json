@@ -1,6 +1,6 @@
 {
   "name": "read-id3-tags",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Read ID3-Tags from a MP3-File",
   "main": "dist/lib/index.js",
   "typings": "dist/lib/index",
