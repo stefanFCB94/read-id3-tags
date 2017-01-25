@@ -4,6 +4,10 @@
   "description": "Read ID3-Tags from a MP3-File",
   "main": "dist/lib/index.js",
   "typings": "dist/lib/index",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stefanFCB94/read-id3-tags"
+  },
   "files": [
     "dist/"
   ],
