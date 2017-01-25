@@ -29,7 +29,7 @@ import {readID3Tags} from 'read-id3-tags';
 const filePath: string = 'Path to file';
 
 // Tags can be read from a stream
-const fileStream: fs.createReadStream(filePath);
+const fileStream: fs.ReadStream = fs.createReadStream(filePath);
 
 readID3Tags(filePath).then((data) => {
     // Logs the following data
