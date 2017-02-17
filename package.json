@@ -24,7 +24,7 @@
   "author": "Stefan Läufle",
   "license": "MIT",
   "dependencies": {
-    "extract-featurings": "^1.0.0",
+    "extract-featurings": "^2.0.0",
     "musicmetadata": "^2.0.5"
   },
   "devDependencies": {
