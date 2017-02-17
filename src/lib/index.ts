@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as mm from 'musicmetadata';
-import {readFeaturing, Featuring} from 'extract-featurings';
+import * as feat from 'extract-featurings';
 
 export interface id3Tags extends MM.Metadata {
     featurings?: Array<string>
@@ -44,11 +44,30 @@ export function readID3Tags(file: fs.ReadStream | string): Promise<id3Tags> {
             let id3: id3Tags = metadata;
 
             if ( metadata.title != null ) {
-                const feat: Featuring = readFeaturing(metadata.title);
+                // Read featurings from title
+                const f: feat.TitleFeaturing = feat.readTitleFeaturing(metadata.title);
 
-                // Set cleaned title and detected featurings
-                id3.title = feat.title;
-                id3.featurings = feat.feat;
+                // Read featurings from artitst
+                let cleanedArtist: Array<string> = [];
+                metadata.artist.forEach((val) => {
+                    const f2: feat.ArtistFeaturing = feat.reatArtistFeaturing(val);
+
+                    cleanedArtist.push(f2.artist);
+                    f.feat = f.feat.concat(f2.feat);
+                });
+                
+                // Remove duplicates from array
+                f.feat = f.feat.filter((item, pos, self) => {
+                    return self.indexOf(item) == pos;
+                });
+
+                // Sort featurings in alphabetical order
+                f.feat.sort();
+
+                // Set cleaned title, artist and detected featurings
+                id3.title = f.title;
+                id3.artist = cleanedArtist;
+                id3.featurings = f.feat;
             }
 
             resolve(id3);

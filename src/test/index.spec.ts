@@ -7,6 +7,7 @@ import * as fs from 'fs';
 
 const pathFileNoTags: string = path.resolve(__dirname , '../../src/test/no_tags.mp3');
 const pathFileWithTags: string = path.resolve(__dirname, '../../src/test/with_tags.mp3');
+const pathFileWithTags2: string = path.resolve(__dirname, '../../src/test/with_tags2.mp3');
 
 
 @suite('Check if the tags of a MP3-File are read correct')
@@ -53,7 +54,7 @@ class ReadID3Tags {
             done();
         }).catch((err) => {
            done(err); 
-        });;
+        });
     }
 
     @test('Check if file with tags is read correct as stream')
@@ -126,6 +127,32 @@ class ReadID3Tags {
             
             done();
         });
+    }
+
+    @test('Check if file with different featuring in the id3-tags is read correct')
+    read_file_with_tags_stream2(done: Function) {
+        const file: fs.ReadStream = fs.createReadStream(pathFileWithTags2);
+
+        // Try to read the file
+        readID3Tags(file).then((data) => {
+            expect(data).to.be.not.undefined;
+            expect(data).to.be.a('object');
+
+            expect(data.title).to.be.equal('title');
+
+            expect(data.artist).to.be.a('array');
+            expect(data.artist.length).to.be.equal(1);
+            expect(data.artist[0]).to.be.equal('artist');
+
+            expect(data.featurings).to.be.a('array');
+            expect(data.featurings.length).to.be.equal(2);
+            expect(data.featurings[0]).to.be.equal('a1');
+            expect(data.featurings[1]).to.be.equal('a2');
+
+            done();
+        }).catch((err) => {
+           done(err); 
+        });;
     }
 
 }
